@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PrepPal – AI-Powered Personalized Learning</title>
+	<meta name="description" content="Master any goal faster with PrepPal, your personalized AI study partner. Dynamic roadmap, curated resources, pop quizzes, spaced repetition, and smart summaries.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<canvas id="starfield" aria-hidden="true"></canvas>
+	<header class="site-header">
+		<div class="container">
+			<a class="logo" href="#" aria-label="PrepPal Home">
+				<span class="logo-mark">✦</span><span class="logo-text">PrepPal</span>
+			</a>
+			<nav class="nav">
+				<a href="#features">Features</a>
+				<a href="#cta" class="btn btn-primary btn-small">Join Waitlist</a>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<section class="hero" id="hero">
+			<div class="container grid-2">
+				<div class="hero-copy">
+					<h1>Master Any Goal, Faster. <span class="accent">Your Personalized AI Study Partner</span> is Here.</h1>
+					<p class="subhead">Stop drowning in information. Start learning smarter. PrepPal creates your dynamic roadmap, curates resources, and keeps you on track to achieve your goals.</p>
+					<div class="hero-cta">
+						<a href="#cta" class="btn btn-primary btn-large">Get Early Access</a>
+						<a href="#features" class="btn btn-ghost btn-large">See How It Works</a>
+					</div>
+				</div>
+				<div class="hero-visual" aria-hidden="true">
+					<div class="orb"></div>
+					<div class="constellation">
+						<div class="node big"></div>
+						<div class="node"></div>
+						<div class="node"></div>
+						<div class="node"></div>
+						<div class="link"></div>
+						<div class="link"></div>
+						<div class="link"></div>
+					</div>
+					<div class="student"></div>
+				</div>
+			</div>
+			<div class="gradient-ring" aria-hidden="true"></div>
+		</section>
+
+		<section class="features" id="features">
+			<div class="container">
+				<h2 class="section-title">Everything you need to learn smarter</h2>
+				<div class="features-grid">
+					<article class="feature">
+						<div class="icon">🗺️</div>
+						<h3>Personalized AI Roadmap</h3>
+						<p>A glowing path with clear milestones tailored to your goals.</p>
+					</article>
+					<article class="feature">
+						<div class="icon">🔎</div>
+						<h3>Curated Resources</h3>
+						<p>High‑quality videos, articles, and podcasts—handpicked for impact.</p>
+					</article>
+					<article class="feature">
+						<div class="icon">🧠</div>
+						<h3>AI Pop Quizzes</h3>
+						<p>Spaced repetition that sticks, with bite‑size adaptive quizzes.</p>
+					</article>
+					<article class="feature">
+						<div class="icon">🏅</div>
+						<h3>Goal Tracking</h3>
+						<p>Progress bars and nudges that keep momentum high.</p>
+					</article>
+					<article class="feature">
+						<div class="icon">💡</div>
+						<h3>Smart Summaries</h3>
+						<p>Condensed notes that turn dense content into clarity.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="cta" id="cta">
+			<div class="container grid-2">
+				<div class="cta-copy">
+					<h2>Ready to Transform Your Learning?</h2>
+					<p>PrepPal is currently in exclusive early access, building the ultimate personalized learning experience. Join our waitlist to be among the first to experience AI‑powered learning. <strong>Limited spots available!</strong></p>
+				</div>
+				<form class="cta-form" id="waitlist-form" novalidate>
+					<fieldset>
+						<legend class="legend">Sign Up with Loveable AI</legend>
+						<label class="sr-only" for="email">Email Address</label>
+						<input id="email" name="email" type="email" placeholder="Email Address" autocomplete="email" required>
+						<label class="checkbox">
+							<input type="checkbox" id="consent" name="consent" checked>
+							<span>Yes, I'd like to receive updates about PrepPal's launch and special offers.</span>
+						</label>
+						<button type="submit" class="btn btn-primary btn-large">Join the PrepPal Waitlist & Get Early Access!</button>
+						<p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+					</fieldset>
+				</form>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<p>© <span id="year"></span> PrepPal. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<script src="script.js"></script>
+</body>
+</html> 
