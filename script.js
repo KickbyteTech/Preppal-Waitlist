@@ -14,56 +14,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- Supabase Connection ---
+    // ⚠️ Replace with your actual Supabase URL and Anon Key
+    const SUPABASE_URL = 'https://yfvrqgpuetissvhibfkp.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlmdnJxZ3B1ZXRpc3N2aGliZmtwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkzODM3MzMsImV4cCI6MjA3NDk1OTczM30.8l9eMbT_YrS36VBtx0wv4ta9_i8CuScc5ZCpeDTsAes';
+
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    console.log('Supabase Initialized!');
+
     // --- Waitlist Form Submission ---
     const waitlistForm = document.getElementById('waitlist-form');
     const emailInput = document.getElementById('email');
     const submitButton = waitlistForm.querySelector('button[type="submit"]');
 
-    waitlistForm.addEventListener('submit', function(e) {
+    waitlistForm.addEventListener('submit', async function(e) {
         e.preventDefault(); // Prevent the form from reloading the page
+        const email = emailInput.value.trim();
 
-        const email = emailInput.value;
-
-        // Simple validation
         if (email && validateEmail(email)) {
-            // Change button text to show loading/processing state
             submitButton.textContent = 'Joining...';
             submitButton.disabled = true;
 
-            // --- IMPORTANT ---
-            // In a real application, you would make an API call here
-            // to your backend (like Supabase, Firebase, or a custom server)
-            // to save the email address to your waitlist database.
-            // For example:
-            //
-            // fetch('https://your-api-endpoint.com/join-waitlist', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify({ email: email })
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     console.log('Success:', data);
-            //     submitButton.textContent = '✅ You\'re on the list!';
-            // })
-            // .catch((error) => {
-            //     console.error('Error:', error);
-            //     submitButton.textContent = 'Something went wrong!';
-            //     submitButton.disabled = false; // Re-enable on error
-            // });
+            // --- Save the email to Supabase ---
+            try {
+                const { data, error } = await supabase
+                    .from('waitlist') // The name of your table
+                    .insert([
+                        { email: email } // The column name and value
+                    ]);
 
-
-            // --- SIMULATION FOR THIS EXAMPLE ---
-            // We'll simulate a successful API call with a 1.5-second delay.
-            setTimeout(() => {
-                submitButton.style.backgroundColor = '#22c55e'; // Green color for success
-                submitButton.textContent = '✅ Success! You\'re on the list.';
-                // The button remains disabled to prevent multiple submissions.
-                console.log(`Simulated submission for email: ${email}`);
-            }, 1500);
+                if (error) {
+                    // This will catch errors like duplicate emails if you set your
+                    // email column to be UNIQUE in the Supabase table settings.
+                    console.error('Supabase error:', error.message);
+                    submitButton.style.backgroundColor = '#ef4444'; // Red for error
+                    submitButton.textContent = 'Error: Email may already be on list.';
+                    // Re-enable after a few seconds so user can try again
+                    setTimeout(() => {
+                        submitButton.textContent = 'Join the PrepPal Waitlist & Get Early Access!';
+                        submitButton.style.backgroundColor = ''; // Revert color
+                        submitButton.disabled = false;
+                    }, 3000);
+                } else {
+                    console.log('Successfully added to waitlist:', data);
+                    submitButton.style.backgroundColor = '#22c55e'; // Green for success
+                    submitButton.textContent = '✅ Success! You\'re on the list.';
+                    // Button remains disabled after success
+                }
+            } catch (err) {
+                console.error('An unexpected error occurred:', err);
+                submitButton.textContent = 'An error occurred!';
+                submitButton.disabled = false;
+            }
 
         } else {
-            // Handle invalid email
             alert('Please enter a valid email address.');
         }
     });
@@ -73,5 +77,4 @@ document.addEventListener('DOMContentLoaded', () => {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
     }
-
 });
