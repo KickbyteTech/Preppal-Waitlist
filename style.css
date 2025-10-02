@@ -1,0 +1,407 @@
+/* ==================== GLOBAL STYLES & VARIABLES ==================== */
+:root {
+    --bg-color: #020617; /* Very dark blue, almost black */
+    --primary-accent: #22d3ee; /* Bright cyan */
+    --secondary-accent: #4f46e5; /* Indigo for gradients */
+    --card-bg: rgba(15, 23, 42, 0.7); /* Slate blue, semi-transparent */
+    --border-color: rgba(56, 189, 248, 0.2); /* Light blue, transparent for borders */
+    --text-primary: #e2e8f0; /* Light gray for main text */
+    --text-secondary: #94a3b8; /* Muted gray for descriptions */
+    --font-family: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background Glowing Effect */
+.background-glow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.3) 0%, rgba(2, 6, 23, 0) 60%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.5rem;
+}
+
+.highlight {
+    color: var(--primary-accent);
+}
+
+.section__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.section__description {
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+    text-align: center;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ==================== HEADER / NAVIGATION ==================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1rem 0;
+    transition: background-color 0.3s ease;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.nav__list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav__link:hover {
+    color: var(--primary-accent);
+}
+
+
+/* ==================== HERO SECTION ==================== */
+.hero {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.hero__content {
+    flex: 1;
+}
+
+.hero__title {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.hero__subtitle {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+.hero__description {
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.hero__image-container {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero__image {
+    max-width: 100%;
+    border-radius: 1rem;
+    filter: drop-shadow(0 0 35px rgba(34, 211, 238, 0.4));
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Floating animation for brain */
+@keyframes float {
+	0% { transform: translatey(0px); }
+	50% { transform: translatey(-20px); }
+	100% { transform: translatey(0px); }
+}
+
+.info-card {
+    position: absolute;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+.info-card p { line-height: 1.3; }
+.info-card strong { color: var(--primary-accent); font-size: 1.2rem;}
+
+.card-1 {
+    top: 20%;
+    left: 0;
+}
+.card-2 {
+    bottom: 20%;
+    right: 0;
+}
+
+/* ==================== BUTTON ==================== */
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-accent);
+    color: #000;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background: transparent;
+    border-color: var(--primary-accent);
+    color: var(--primary-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(34, 211, 238, 0.2);
+}
+
+.button i {
+    font-size: 1.2rem;
+}
+
+.button--full {
+    width: 100%;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+
+/* ==================== FEATURES SECTION ==================== */
+.features {
+    padding-top: 60px;
+    padding-bottom: 80px;
+}
+
+.features__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 25px rgba(34, 211, 238, 0.2);
+}
+
+.feature-card__icon {
+    font-size: 2.5rem;
+    color: var(--primary-accent);
+    margin-bottom: 1rem;
+}
+
+.feature-card__title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.feature-card__description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ==================== WAITLIST SECTION ==================== */
+.waitlist {
+    padding-top: 60px;
+    padding-bottom: 80px;
+    text-align: center;
+}
+
+.waitlist__badge {
+    display: inline-block;
+    background: rgba(34, 211, 238, 0.1);
+    color: var(--primary-accent);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(34, 211, 238, 0.3);
+}
+
+.waitlist__pills {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.waitlist__pills span {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.waitlist__form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: left;
+}
+.waitlist__form-container h3 {
+    text-align: center;
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+.waitlist__form-container > p {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-group input[type="email"] {
+    width: 100%;
+    padding: 1rem;
+    background: #0f172a;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+.form-group input[type="email"]:focus {
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.3);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-accent);
+}
+.checkbox-group label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.form-terms {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 1.5rem;
+}
+
+.trusted-by {
+    margin-top: 2rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+
+/* ==================== RESPONSIVENESS ==================== */
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    .features__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav__menu {
+        /* Add mobile menu logic here if needed */
+        display: none;
+    }
+    .hero__title {
+        font-size: 3rem;
+    }
+    .section__title {
+        font-size: 2rem;
+    }
+    .features__grid {
+        grid-template-columns: 1fr;
+    }
+    .waitlist__form-container {
+        padding: 1.5rem;
+    }
+}

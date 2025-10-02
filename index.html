@@ -1,119 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>PrepPal – AI-Powered Personalized Learning</title>
-	<meta name="description" content="Master any goal faster with PrepPal, your personalized AI study partner. Dynamic roadmap, curated resources, pop quizzes, spaced repetition, and smart summaries.">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrepPal | Your Personalized AI Study Partner</title>
+    <link rel="icon" type="image/x-icon" href="/assets/Preppal-Icon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-	<canvas id="starfield" aria-hidden="true"></canvas>
-	<header class="site-header">
-		<div class="container">
-			<a class="logo" href="#" aria-label="PrepPal Home">
-				<span class="logo-mark">✦</span><span class="logo-text">PrepPal</span>
-			</a>
-			<nav class="nav">
-				<a href="#features">Features</a>
-				<a href="#cta" class="btn btn-primary btn-small">Join Waitlist</a>
-			</nav>
-		</div>
-	</header>
 
-	<main>
-		<section class="hero" id="hero">
-			<div class="container grid-2">
-				<div class="hero-copy">
-					<h1>Master Any Goal, Faster. <span class="accent">Your Personalized AI Study Partner</span> is Here.</h1>
-					<p class="subhead">Stop drowning in information. Start learning smarter. PrepPal creates your dynamic roadmap, curates resources, and keeps you on track to achieve your goals.</p>
-					<div class="hero-cta">
-						<a href="#cta" class="btn btn-primary btn-large">Get Early Access</a>
-						<a href="#features" class="btn btn-ghost btn-large">See How It Works</a>
-					</div>
-				</div>
-				<div class="hero-visual" aria-hidden="true">
-					<div class="orb"></div>
-					<div class="constellation">
-						<div class="node big"></div>
-						<div class="node"></div>
-						<div class="node"></div>
-						<div class="node"></div>
-						<div class="link"></div>
-						<div class="link"></div>
-						<div class="link"></div>
-					</div>
-					<div class="student"></div>
-				</div>
-			</div>
-			<div class="gradient-ring" aria-hidden="true"></div>
-		</section>
+    <div class="background-glow"></div>
 
-		<section class="features" id="features">
-			<div class="container">
-				<h2 class="section-title">Everything you need to learn smarter</h2>
-				<div class="features-grid">
-					<article class="feature">
-						<div class="icon">🗺️</div>
-						<h3>Personalized AI Roadmap</h3>
-						<p>A glowing path with clear milestones tailored to your goals.</p>
-					</article>
-					<article class="feature">
-						<div class="icon">🔎</div>
-						<h3>Curated Resources</h3>
-						<p>High‑quality videos, articles, and podcasts—handpicked for impact.</p>
-					</article>
-					<article class="feature">
-						<div class="icon">🧠</div>
-						<h3>AI Pop Quizzes</h3>
-						<p>Spaced repetition that sticks, with bite‑size adaptive quizzes.</p>
-					</article>
-					<article class="feature">
-						<div class="icon">🏅</div>
-						<h3>Goal Tracking</h3>
-						<p>Progress bars and nudges that keep momentum high.</p>
-					</article>
-					<article class="feature">
-						<div class="icon">💡</div>
-						<h3>Smart Summaries</h3>
-						<p>Condensed notes that turn dense content into clarity.</p>
-					</article>
-				</div>
-			</div>
-		</section>
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">PrepPal</a>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#features" class="nav__link">Features</a></li>
+                    <li class="nav__item"><a href="#waitlist" class="nav__link">Early Access</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-		<section class="cta" id="cta">
-			<div class="container grid-2">
-				<div class="cta-copy">
-					<h2>Ready to Transform Your Learning?</h2>
-					<p>PrepPal is currently in exclusive early access, building the ultimate personalized learning experience. Join our waitlist to be among the first to experience AI‑powered learning. <strong>Limited spots available!</strong></p>
-				</div>
-				<form class="cta-form" id="waitlist-form" novalidate>
-					<fieldset>
-						<legend class="legend">Sign Up with Loveable AI</legend>
-						<label class="sr-only" for="email">Email Address</label>
-						<input id="email" name="email" type="email" placeholder="Email Address" autocomplete="email" required>
-						<label class="checkbox">
-							<input type="checkbox" id="consent" name="consent" checked>
-							<span>Yes, I'd like to receive updates about PrepPal's launch and special offers.</span>
-						</label>
-						<button type="submit" class="btn btn-primary btn-large">Join the PrepPal Waitlist & Get Early Access!</button>
-						<p class="form-note" id="form-note" role="status" aria-live="polite"></p>
-					</fieldset>
-				</form>
-			</div>
-		</section>
-	</main>
+    <main>
+        <section class="hero container">
+            <div class="hero__content">
+                <h1 class="hero__title">Master Any Goal, <br><span class="highlight">Faster</span></h1>
+                <p class="hero__subtitle">Your Personalized AI Study Partner is Here.</p>
+                <p class="hero__description">
+                    Stop drowning in information. Start learning smarter. PrepPal creates your dynamic roadmap, curates resources, and keeps you on track to achieve your goals.
+                </p>
+                <a href="#waitlist" class="button">Get Early Access <i class='bx bx-right-arrow-alt'></i></a>
+            </div>
+            <div class="hero__image-container">
+                <img src="assets/Untitled design.png" alt="AI Brain Illustration" class="hero__image">
+                <div class="info-card card-1">
+                    <p><strong>85%</strong><br>Faster Learning</p>
+                </div>
+                <div class="info-card card-2">
+                    <p><strong>24/7</strong><br>AI Support</p>
+                </div>
+            </div>
+        </section>
 
-	<footer class="site-footer">
-		<div class="container">
-			<p>© <span id="year"></span> PrepPal. All rights reserved.</p>
-		</div>
-	</footer>
+        <section id="features" class="features container">
+            <h2 class="section__title">Everything You Need to <span class="highlight">Learn Smarter</span></h2>
+            <p class="section__description">
+                PrepPal combines cutting-edge AI with proven learning science to create the ultimate personalized education experience.
+            </p>
+            <div class="features__grid">
+                <div class="feature-card">
+                    <div class="feature-card__icon"><i class='bx bxs-brain'></i></div>
+                    <h3 class="feature-card__title">Personalized AI Roadmap</h3>
+                    <p class="feature-card__description">Dynamic learning paths that adapt to your progress and learning style.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon"><i class='bx bx-search-alt'></i></div>
+                    <h3 class="feature-card__title">Curated Resources</h3>
+                    <p class="feature-card__description">AI-powered content discovery from videos, articles, and interactive materials.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon"><i class='bx bxs-zap'></i></div>
+                    <h3 class="feature-card__title">Smart Quizzes & Spaced Repetition</h3>
+                    <p class="feature-card__description">Optimized practice sessions that strengthen memory retention.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon"><i class='bx bxs-target-lock'></i></div>
+                    <h3 class="feature-card__title">Goal Tracking & Motivation</h3>
+                    <p class="feature-card__description">Visual progress tracking with milestone celebrations and streaks.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon"><i class='bx bxs-file-doc'></i></div>
+                    <h3 class="feature-card__title">AI Summaries & Notes</h3>
+                    <p class="feature-card__description">Instant summaries and organized notes from any learning material.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon"><i class='bx bxs-bar-chart-alt-2'></i></div>
+                    <h3 class="feature-card__title">Analytics & Insights</h3>
+                    <p class="feature-card__description">Deep learning analytics to optimize your study habits and efficiency.</p>
+                </div>
+            </div>
+        </section>
 
-	<script src="script.js"></script>
+        <section id="waitlist" class="waitlist container">
+            <div class="waitlist__badge">Exclusive Early Access</div>
+            <h2 class="section__title">Ready to <span class="highlight">Transform Your Learning?</span></h2>
+            <p class="section__description">
+                PrepPal is currently in exclusive early access, building the ultimate personalized learning experience. Join our waitlist to be among the first to experience AI-powered learning.
+            </p>
+            <div class="waitlist__pills">
+                <span><i class='bx bxs-hot'></i> Limited Spots Available</span>
+                <span><i class='bx bxs-star'></i> Free Beta Access</span>
+            </div>
+
+            <div class="waitlist__form-container">
+                <h3>Join the Waitlist</h3>
+                <p>Get early access and special launch offers</p>
+                <form id="waitlist-form">
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Enter your email address" required>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="subscribe" checked>
+                        <label for="subscribe">Yes, I'd like to receive updates about PrepPal's launch and special offers.</label>
+                    </div>
+                    <button type="submit" class="button button--full">Join the PrepPal Waitlist & Get Early Access!</button>
+                    <p class="form-terms">
+                        By signing up, you agree to our Terms of Service and Privacy Policy. Unsubscribe at any time.
+                    </p>
+                </form>
+            </div>
+             <p class="trusted-by">Trusted by learners worldwide</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 PrepPal. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-</html> 
+</html>
