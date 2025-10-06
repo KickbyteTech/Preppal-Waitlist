@@ -28,8 +28,20 @@ body {
     position: relative;
 }
 
+/* Particle canvas sits behind all content but above background color
+   Keep z-index low so interactive elements remain clickable. */
+#particle-canvas {
+    position: fixed;
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    pointer-events: none;
+    display: block;
+}
+
 /* Background Glowing Effect */
-/* .background-glow {
+.background-glow {
     position: absolute;
     top: 0;
     left: 50%;
@@ -39,25 +51,7 @@ body {
     background: radial-gradient(circle, rgba(79, 70, 229, 0.3) 0%, rgba(2, 6, 23, 0) 60%);
     z-index: -1;
     pointer-events: none;
-}  */
-    /* Animated background particles */
-    .bg-particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-    #particles {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: rgba(64, 224, 255, 0.3);
-      border-radius: 50%;
-      animation: float 6s ease-in-out infinite;
-    }
+}
 
 .container {
     max-width: 1120px;
