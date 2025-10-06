@@ -85,10 +85,7 @@ body {
 }
 
 .nav__logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    text-decoration: none;
+    height: 30px;
 }
 
 .nav__list {
@@ -115,7 +112,11 @@ body {
     padding-bottom: 80px;
     display: flex;
     align-items: center;
-    gap: 4rem;
+    column-gap: 4rem;
+}
+.nav__logo {
+    display: flex;
+    gap: 1 rem;
 }
 
 .hero__content {

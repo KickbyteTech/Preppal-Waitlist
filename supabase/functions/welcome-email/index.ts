@@ -3,17 +3,36 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { Resend } from 'npm:resend';
 
-// Initialize Resend with your API key from a secure environment variable
-const resend = new Resend(Deno.env.get('RESEND_API_KEY')!);
+// --- Define a type for the incoming data from the trigger ---
+interface WebhookPayload {
+  record: {
+    email: string;
+  };
+}
 
-// The email address you want to send from (must be a verified domain in Resend)
-const FROM_EMAIL = 'welcome@yourdomain.com'; // <-- REPLACE with your verified sender email
+// --- Safely get the API key ---
+const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
+if (!RESEND_API_KEY) {
+  // If the key isn't set, throw an error to stop the function
+  throw new Error("RESEND_API_KEY environment variable is not set.");
+}
+
+const resend = new Resend(RESEND_API_KEY);
+
+const FROM_EMAIL = 'preppal.live@gmail.com'; // <-- Use your verified domain
 const FROM_NAME = 'PrepPal';
 
-serve(async (req) => {
+// --- Main function to handle requests ---
+serve(async (req: Request) => { // <-- Added type `Request` to req
   try {
-    const { record } = await req.json();
-    const userEmail = record.email;
+    // Check if the API key was loaded correctly
+    if (!resend) {
+      throw new Error("Resend client failed to initialize.");
+    }
+
+    // --- Specify the type of the JSON payload ---
+    const payload: WebhookPayload = await req.json();
+    const userEmail = payload.record?.email; // Use optional chaining for safety
 
     if (!userEmail) {
       throw new Error("Email is missing in the webhook payload");
@@ -53,17 +72,23 @@ serve(async (req) => {
     if (error) {
       console.error({ error });
       return new Response(JSON.stringify({ error: error.message }), {
-        status: 500,
+        status: 400, // Use 400 for client-side errors from the API
         headers: { "Content-Type": "application/json" },
       });
     }
 
     return new Response(JSON.stringify(data), {
+      status: 200,
       headers: { "Content-Type": "application/json" },
     });
 
   } catch (err) {
+    // --- Handle errors safely ---
     console.error(err);
-    return new Response(String(err?.message ?? err), { status: 500 });
+    const errorMessage = err instanceof Error ? err.message : "An unknown error occurred";
+    return new Response(JSON.stringify({ error: errorMessage }), { 
+      status: 500,
+      headers: { "Content-Type": "application/json" }
+    });
   }
 });
